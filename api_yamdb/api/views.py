@@ -1,21 +1,14 @@
-from django_filters.rest_framework import DjangoFilterBackend
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets, filters, mixins
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, mixins, viewsets
 from rest_framework.pagination import PageNumberPagination
+from reviews.models import Category, Genre, Review, Title
 
 from .filters import TitleFilter
-from .permissions import (RolePermission,
-                          GenrePermission,
-                          TitlePermission
-                          )
-from reviews.models import Title, Genre, Category, Review
-from .serializers import (GenreSerializer,
-                          TitleGetSerializer,
-                          TitlePostSerializer,
-                          CategorySerializer,
-                          CommentSerializer,
-                          ReviewSerializer,
-                          )
+from .permissions import GenrePermission, RolePermission, TitlePermission
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ReviewSerializer,
+                          TitleGetSerializer, TitlePostSerializer)
 
 
 class TitleViewSet(viewsets.ModelViewSet):

@@ -1,12 +1,11 @@
 import datetime as dt
 
-from rest_framework import serializers
 from django.core.validators import MaxValueValidator
-from rest_framework.generics import get_object_or_404
-from rest_framework.exceptions import ValidationError
 from django.db.models import Avg
-
-from reviews.models import Genre, Category, Title, Comment, Review
+from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
+from rest_framework.generics import get_object_or_404
+from reviews.models import Category, Comment, Genre, Review, Title
 
 
 class GenreSerializer(serializers.ModelSerializer):
