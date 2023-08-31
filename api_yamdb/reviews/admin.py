@@ -10,7 +10,7 @@ class ReviewAdmin(admin.ModelAdmin):
     )
     search_fields = ('author', 'title', 'text',)
     list_filter = ('author',)
-    empty_value_display = '-пусто-'
+    empty_value_display = '-empty-'
 
 
 class CommentAdmin(admin.ModelAdmin):
