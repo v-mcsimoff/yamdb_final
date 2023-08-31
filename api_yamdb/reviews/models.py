@@ -25,22 +25,22 @@ class Category(models.Model):
 class Title(models.Model):
     name = models.CharField(
         max_length=150,
-        verbose_name='название'
+        verbose_name='name'
     )
     year = models.IntegerField(
-        verbose_name='Год выпуска',
+        verbose_name='Release year',
     )
     description = models.TextField(
-        verbose_name='Описание'
+        verbose_name='Description'
     )
     genre = models.ManyToManyField(
         Genre,
-        verbose_name='Жанр',
+        verbose_name='Genre',
         related_name='titles',
     )
     category = models.ForeignKey(
         Category,
-        verbose_name='Категория',
+        verbose_name='Category',
         on_delete=models.SET_NULL,
         related_name='titles',
         null=True
@@ -50,35 +50,35 @@ class Title(models.Model):
 class Review(models.Model):
     title = models.ForeignKey(
         Title,
-        verbose_name='Произведение',
+        verbose_name='Work',
         on_delete=models.CASCADE,
         related_name='reviews'
     )
     text = models.TextField(
-        verbose_name='Текст',
+        verbose_name='Text',
     )
     author = models.ForeignKey(
         User,
-        verbose_name='Автор',
+        verbose_name='Author',
         on_delete=models.CASCADE,
         related_name='reviews'
     )
     score = models.PositiveSmallIntegerField(
-        verbose_name='Рейтинг',
+        verbose_name='Score',
         validators=[
-            MinValueValidator(1, 'Введите целое число от 1 до 10'),
-            MaxValueValidator(10, 'Введите целое число от 1 до 10')
+            MinValueValidator(1, 'Enter an integer from 1 to 10'),
+            MaxValueValidator(10, 'Enter an integer from 1 to 10')
         ],
     )
     pub_date = models.DateTimeField(
-        verbose_name='Дата публикации',
+        verbose_name='Publication date',
         auto_now_add=True,
         db_index=True
     )
 
     class Meta:
-        verbose_name = 'Отзыв'
-        verbose_name_plural = 'Отзывы'
+        verbose_name = 'Review'
+        verbose_name_plural = 'Reviews'
         constraints = [
             models.UniqueConstraint(
                 fields=['title', 'author'],
@@ -90,25 +90,25 @@ class Review(models.Model):
 class Comment(models.Model):
     review = models.ForeignKey(
         Review,
-        verbose_name='Отзыв',
+        verbose_name='Review',
         on_delete=models.CASCADE,
         related_name='comments'
     )
     text = models.TextField(
-        verbose_name='Текст',
+        verbose_name='Text',
     )
     author = models.ForeignKey(
         User,
-        verbose_name='Пользователь',
+        verbose_name='User',
         on_delete=models.CASCADE,
         related_name='comments'
     )
     pub_date = models.DateTimeField(
-        verbose_name='Дата публикации',
+        verbose_name='Publication date',
         auto_now_add=True,
         db_index=True
     )
 
     class Meta:
-        verbose_name = 'Комментарий'
-        verbose_name_plural = 'Комментарии'
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comment'
