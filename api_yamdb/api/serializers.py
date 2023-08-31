@@ -68,7 +68,7 @@ class TitlePostSerializer(serializers.ModelSerializer):
     def validate_year(self, value):
         year = dt.date.today().year
         if value > year:
-            raise serializers.ValidationError('Проверьте указанный год')
+            raise serializers.ValidationError('Check the year indicated')
         return value
 
 
@@ -105,6 +105,6 @@ class ReviewSerializer(serializers.ModelSerializer):
         if request.method == 'POST':
             if title.reviews.select_related('title').filter(author=author):
                 raise ValidationError(
-                    'Отзыв можно оставить один раз!'
+                    'Review can be left only one time!'
                 )
         return data
