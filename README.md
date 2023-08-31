@@ -78,4 +78,4 @@ DB_PORT=5432
 ### Documentation API YaMDb
 Documentation is available at the endpoint: http://localhost/redoc/
 
-Author: <br>[Vladimir Maksimov](https://github.com/v-mcsimoff)
+Author: <br>[Vladimir Maksimov](https://github.com/v-mcsimoff) 
