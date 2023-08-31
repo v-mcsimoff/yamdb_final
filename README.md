@@ -55,7 +55,7 @@ Collect static files:
 docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-Create a database dump ( there is no database dump in the current repository):
+Create a database dump (there is no database dump in the current repository):
 ```bash
 docker-compose exec web python manage.py dumpdata > fixtures.json
 ```
