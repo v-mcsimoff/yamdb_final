@@ -98,7 +98,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-# U
+#
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
